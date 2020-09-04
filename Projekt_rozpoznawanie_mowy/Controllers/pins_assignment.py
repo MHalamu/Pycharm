@@ -1,0 +1,10 @@
+KITCHEN_LIGHT_PIN = 8
+BEDROOM_LIGHT_PIN = 9
+MAIN_DOOR_LOCK_PIN = 10
+
+RELAY_MAP = {
+    1: 11,
+    2: 12,
+    3: 13,
+    4: 14
+}
