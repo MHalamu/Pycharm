@@ -27,6 +27,6 @@ class VoiceCommandsContainer(object):
     TURN_OFF_LIGHT_BEDROOM = VoiceCommand("Light_off_bedroom", "Turning off light in the bedroom.", "turn off light bedroom")
     TURN_ON_LOCK_MAIN_DOOR = VoiceCommand("lock_main_door", "The main door has been locked", "lock main door")
     TURN_OFF_LOCK_MAIN_DOOR = VoiceCommand("unlock_main_door", "The main door has been unlocked", "unlock main door")
-    ASSIGN_RELAY = VoiceCommand("assign_relay", "Please provide number of the relay you want to assign", "assign relay")
+    ASSIGN_RELAY = VoiceCommand("assign_relay", "Please provide number of the relay you want to define", "define relay")
     NOT_A_NUMBER = VoiceCommand("not_a_number", "This is not a number. Please try again.")
     ALRIGHT_THANK_YOU = VoiceCommand("alright_thank_you", "Ok, have a nice day.")

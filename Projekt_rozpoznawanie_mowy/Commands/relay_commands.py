@@ -10,7 +10,7 @@ class EnableRelayCommand(ICommand):
         self.voice_command = voice_command
 
     def execute(self):
-        self.gpio_controller.set_high(self.pin)
+        self.gpio_controller.set_low(self.pin)
         self.voice_command.execute()
 
 
@@ -23,5 +23,5 @@ class DisableRelayCommand(ICommand):
         self.voice_command = voice_command
 
     def execute(self):
-        self.gpio_controller.set_low(self.pin)
+        self.gpio_controller.set_high(self.pin)
         self.voice_command.execute()

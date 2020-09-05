@@ -8,7 +8,8 @@ class Invoker(object):
     def _find_command_by_request(self, request):
         for command in self.list_of_commands:
             try:
-                if all(word in request.split() for word in command.voice_command.request_text.split()):
+                request_list = [word.lower() for word in request.split()]
+                if all(word.lower() in request_list for word in command.voice_command.request_text.split()):
                     return command
             except (AttributeError, TypeError):
                 pass

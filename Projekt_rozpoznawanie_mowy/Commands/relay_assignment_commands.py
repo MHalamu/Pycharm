@@ -1,6 +1,6 @@
 from Commands.command_interface import ICommand
 from Commands.voice_commands import VoiceCommand, VoiceCommandsContainer
-from Commands.relay_commands import EnableRelayCommand
+from Commands.relay_commands import EnableRelayCommand, DisableRelayCommand
 from Controllers.pins_assignment import RELAY_MAP
 
 
@@ -16,12 +16,12 @@ class AssignRelayCommand(ICommand):
         self.relay_name = None
 
     def _assign_relay_number(self):
-        self.voice_command.execute()  
+        self.voice_command.execute()
         try:
             self.relay_number = int(self.voice_recognizer.listen_for_voice())
         except ValueError:
             raise VoiceCommandsContainer.NOT_A_NUMBER.execute()
-        
+
         assignment_command = VoiceCommand(
             "assign_relay_%s" % self.relay_number,
             "You are now assigning relay number %s" % self.relay_number)
@@ -38,20 +38,20 @@ class AssignRelayCommand(ICommand):
         self.relay_name = self.voice_recognizer.listen_for_voice()
 
         relay_name_cmd = VoiceCommand(
-            "relay_%s_name_replay" % self.relay_number,
+            "relay_%s_name_replay" % self.relay_name.replace(' ', '_'),
             "Relay number %s is now assigned as %s" % (self.relay_number, self.relay_name))
         self.text_to_speech.add_recording(relay_name_cmd)
         relay_name_cmd.execute()
 
     def _create_on_off_commands(self):
         turn_on_relay_voice_command = VoiceCommand(
-            "enable_relay_%s" % self.relay_number,
+            "enable_%s" % self.relay_name.replace(' ', '_'),
             "Turning on %s" % self.relay_name,
             "turn on %s" % self.relay_name)
         self.text_to_speech.add_recording(turn_on_relay_voice_command)
 
         turn_off_relay_voice_command = VoiceCommand(
-            "disable_relay_%s" % self.relay_number,
+            "disable_%s" % self.relay_name.replace(' ', '_'),
             "Turning off %s" % self.relay_name,
             "turn off %s" % self.relay_name)
         self.text_to_speech.add_recording(turn_off_relay_voice_command)
@@ -59,7 +59,7 @@ class AssignRelayCommand(ICommand):
         self.invoker.set_command(EnableRelayCommand(
             gpio_controller=self.gpio_controller, pin=RELAY_MAP[int(self.relay_number)],
             voice_command=turn_on_relay_voice_command))
-        self.invoker.set_command(EnableRelayCommand(
+        self.invoker.set_command(DisableRelayCommand(
             gpio_controller=self.gpio_controller, pin=RELAY_MAP[int(self.relay_number)],
             voice_command=turn_off_relay_voice_command))
 

@@ -6,6 +6,5 @@ GARAGE_DOOR_PIN = 12
 RELAY_MAP = {
     1: 29,
     2: 31,
-    3: 33,
-    4: 35
+    3: 33
 }

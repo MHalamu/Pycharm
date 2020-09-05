@@ -29,7 +29,7 @@ class CloseGarageDoorCommand(ICommand):
         self.voice_command = voice_command
 
     def execute(self):
-        self.gpio_controller.set_pwm_duty_cycle(self.gpio_controller.pwm_pin, 8)
+        self.gpio_controller.set_pwm_duty_cycle(self.gpio_controller.pwm_pin, 9)
         self.voice_command.execute()
         time.sleep(3)
         self.gpio_controller.set_pwm_duty_cycle(self.gpio_controller.pwm_pin, 0)
