@@ -11,14 +11,14 @@ class GpioController(object):
     def __init__(self):
         GPIO.setwarnings(False)  # Ignore warning for now
         GPIO.setmode(GPIO.BOARD)  # Use physical pin numbering
+        self.pwm_pin = None
 
     def set_output_pin(self, pin):
         GPIO.setup(pin, GPIO.OUT)
 
-    def get_pwm_pin(self, pin, frequency):
-        pwm_pin = GPIO.PWM(pin, frequency)
-        pwm_pin.start(0)
-        return pwm_pin
+    def set_pwm_pin(self, pin, frequency):
+        self.pwm_pin = GPIO.PWM(pin, frequency)
+        self.pwm_pin.start(0)
 
     def set_high(self, pin):
         logging.info("Turning on pin %s" % pin)

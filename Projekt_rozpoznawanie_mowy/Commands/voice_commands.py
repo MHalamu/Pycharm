@@ -20,8 +20,8 @@ class VoiceCommandsContainer(object):
     TURN_ON_LIGHT_KITCHEN = VoiceCommand("Light_on_kitchen", "Turning on light in the kitchen.", "turn on light kitchen")
     TURN_OFF_LIGHT_KITCHEN = VoiceCommand("Light_off_kitchen", "Turning off light in the kitchen.", "turn off light kitchen")
 
-    OPEN_GARAGE_DOOR = VoiceCommand("open_garage_door", "Opening the garage.", "open the garage")
-    CLOSE_GARAGE_DOOR = VoiceCommand("close_garage_door", "Closing the garage.", "close the garage")
+    OPEN_GARAGE_DOOR = VoiceCommand("open_garage_door", "Opening the garage.", "open garage")
+    CLOSE_GARAGE_DOOR = VoiceCommand("close_garage_door", "Closing the garage.", "close garage")
 
     TURN_ON_LIGHT_BEDROOM = VoiceCommand("Light_on_bedroom", "Turning on light in the bedroom.", "turn on light bedroom")
     TURN_OFF_LIGHT_BEDROOM = VoiceCommand("Light_off_bedroom", "Turning off light in the bedroom.", "turn off light bedroom")
