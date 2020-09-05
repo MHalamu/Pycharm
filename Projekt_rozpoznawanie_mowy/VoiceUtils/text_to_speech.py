@@ -14,7 +14,9 @@ class TextToSpeech(object):
 
     @staticmethod
     def play_recording(voice_cmd_name):
-        try:
-            os.system("sudo mpg321 -q Recordings/%s.mp3" % voice_cmd_name)
-        except:
+        import socket
+        if socket.gethostname() == 'MacBook-Pro-Michal.local':
             os.system("mpg321 -q Recordings/%s.mp3" % voice_cmd_name)
+        else:
+            os.system("sudo mpg321 -q Recordings/%s.mp3" % voice_cmd_name)
+

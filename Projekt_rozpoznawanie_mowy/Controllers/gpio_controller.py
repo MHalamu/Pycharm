@@ -1,6 +1,11 @@
-from unittest.mock import Mock
+try:
+    import RPi.GPIO as GPIO
+except:
+    from unittest.mock import Mock
+    GPIO = Mock()
+
 import logging
-GPIO = Mock()
+
 
 
 class GpioController(object):
