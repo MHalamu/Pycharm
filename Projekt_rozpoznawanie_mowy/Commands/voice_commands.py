@@ -19,6 +19,12 @@ class VoiceCommandsContainer(object):
     IS_ANYTHING_ELSE = VoiceCommand("is_anything_else", "Can I do anything else for you?")
     TURN_ON_LIGHT_KITCHEN = VoiceCommand("Light_on_kitchen", "Turning on light in the kitchen.", "turn on light kitchen")
     TURN_OFF_LIGHT_KITCHEN = VoiceCommand("Light_off_kitchen", "Turning off light in the kitchen.", "turn off light kitchen")
+
+    OPEN_GARAGE_DOOR = VoiceCommand("open_garage_door", "Opening the garage.", "open the garage")
+    CLOSE_GARAGE_DOOR = VoiceCommand("close_garage_door", "Closing the garage.", "close the garage")
+
+    TURN_ON_LIGHT_BEDROOM = VoiceCommand("Light_on_bedroom", "Turning on light in the bedroom.", "turn on light bedroom")
+    TURN_OFF_LIGHT_BEDROOM = VoiceCommand("Light_off_bedroom", "Turning off light in the bedroom.", "turn off light bedroom")
     TURN_ON_LOCK_MAIN_DOOR = VoiceCommand("lock_main_door", "The main door has been locked", "lock main door")
     TURN_OFF_LOCK_MAIN_DOOR = VoiceCommand("unlock_main_door", "The main door has been unlocked", "unlock main door")
     ASSIGN_RELAY = VoiceCommand("assign_relay", "Please provide number of the relay you want to assign", "assign relay")

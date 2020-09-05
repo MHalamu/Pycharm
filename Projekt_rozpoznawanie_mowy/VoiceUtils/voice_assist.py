@@ -28,7 +28,7 @@ class VoiceAssist(object):
 
     def run(self):
         while True:
-            self._wait_for_hello()
+            #self._wait_for_hello()
 
             while True:
                 # Request text, e.g.: "Turn on the light in the kitchen"

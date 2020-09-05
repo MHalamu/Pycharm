@@ -7,23 +7,27 @@ except:
 import logging
 
 
-
 class GpioController(object):
     def __init__(self):
         GPIO.setwarnings(False)  # Ignore warning for now
         GPIO.setmode(GPIO.BOARD)  # Use physical pin numbering
 
-    def on(self, pin): # to trzebia zmienic na low/high
-        logging.info("Turning on pin %s" % pin)
-        GPIO.setup(pin, GPIO.OUT) # To trzeba by gdzies upchnac wczesniej zeby nie bylo ustawiane za kazdym razem
-        GPIO.output(pin, GPIO.HIGH)  # Turn on
-
-    def off(self, pin):
-        logging.info("Turning off pin %s" % pin)
+    def set_output_pin(self, pin):
         GPIO.setup(pin, GPIO.OUT)
-        GPIO.output(pin, GPIO.LOW)  # Turn on
 
+    def get_pwm_pin(self, pin, frequency):
+        pwm_pin = GPIO.PWM(pin, frequency)
+        pwm_pin.start(0)
+        return pwm_pin
 
+    def set_high(self, pin):
+        logging.info("Turning on pin %s" % pin)
 
+        GPIO.output(pin, GPIO.HIGH)
 
-# Trzeba gdzie (moze tu) dodac sterowanie pwm dla servo.
+    def set_low(self, pin):
+        logging.info("Turning off pin %s" % pin)
+        GPIO.output(pin, GPIO.LOW)
+
+    def set_pwm_duty_cycle(self, pwm_pin, duty_cycle):
+        pwm_pin.ChangeDutyCycle(duty_cycle)
